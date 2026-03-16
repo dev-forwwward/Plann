@@ -3,7 +3,6 @@ export function homepage() {
     // FOLLOWUP SECTION - text animation
     const heroFollowupContent = document.querySelector('.hp_hero_followup_content_wrapper');
     if (heroFollowupContent) {
-        const heroFollowupContainer = heroFollowupContent.querySelector('.hp_hero_followup_container');
 
         document.fonts.ready.then(() => {
 
@@ -12,14 +11,6 @@ export function homepage() {
 
             const letters = heroFollowupContent.querySelectorAll('.letter');
             const distance = text.clientWidth - document.body.clientWidth;
-
-
-            // ScrollTrigger.create({
-            //     trigger: '.section_hero_hp',
-            //     pin: true,
-            //     end: '+=' + distance * .8,
-            //     scrub: true
-            // });
 
             const scrollTween = gsap.timeline({
                 scrollTrigger: {
