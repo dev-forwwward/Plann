@@ -1,10 +1,13 @@
 export function homepage() {
 
-    // FOLLOWUP SECTION - text animation
-    const heroFollowupContent = document.querySelector('.hp_hero_followup_content_wrapper');
-    if (heroFollowupContent) {
+    // setTimeout(() => {
 
-        document.fonts.ready.then(() => {
+    document.fonts.ready.then(() => {
+        // FOLLOWUP SECTION - text animation
+        const heroFollowupContent = document.querySelector('.hp_hero_followup_content_wrapper');
+        if (heroFollowupContent) {
+
+
 
             const text = heroFollowupContent.querySelector('.hp_hero_followup_text');
             wrapLettersInSpan(text);
@@ -61,22 +64,44 @@ export function homepage() {
                     }
                 });
             });
-        });
 
-        // UTIL METHOD - add span wrappers to each letter
-        function wrapLettersInSpan(element) {
-            const text = element.textContent;
-            element.innerHTML = text
-                .split('')
-                .map(char => char === ' ' ? '<span> </span>' : `<span class="letter">${char}</span>`)
-                .join('');
+
+            // UTIL METHOD - add span wrappers to each letter
+            function wrapLettersInSpan(element) {
+                const text = element.textContent;
+                element.innerHTML = text
+                    .split('')
+                    .map(char => char === ' ' ? '<span> </span>' : `<span class="letter">${char}</span>`)
+                    .join('');
+            }
         }
-    }
 
-    // TEAM SECTION - text animation
-    const teamSection = document.querySelector('.section_hp_team.hp_team_card_effect');
-    if (teamSection) {
-        setTimeout(() => {
+        // IMG SLIDE CURTAIN
+        const hpServices = document.querySelector('.section_services');
+        if (hpServices) {
+            gsap.timeline({
+                scrollTrigger: {
+                    trigger: hpServices,
+                    start: 'top top',
+                    end: '+=200%',
+                    pin: true,
+                    scrub: true,
+                }
+            })
+            .to({},{
+                duration: .25
+            })
+            .to('.hp_curtain_effect_img_container', {
+                clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
+                stagger: 1.55,
+                ease: 'none',
+                duration: 1.5
+            });
+        }
+
+        // TEAM SECTION - text animation
+        const teamSection = document.querySelector('.section_hp_team.hp_team_card_effect');
+        if (teamSection) {
             const container = document.querySelector('.hp_team_list_container')
             const cardsContainer = container.querySelector('.hp_team_list_cards')
             const cards = document.querySelectorAll('.hp_team_list_card')
@@ -126,8 +151,9 @@ export function homepage() {
                     }
                 })
             })
-        }, 200);
-    }
+        }
+        // }, 250);
 
-    console.log("running homepage()");
+        console.log("running homepage()");
+    }); // fonts ready
 }

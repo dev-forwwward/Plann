@@ -2,3 +2,32 @@
 .hp_hero_followup_content_wrapper .letter {
     display: inline-block;
 }
+
+/* Img Slide Curtain */
+.hp_curtain_effect_img_list {
+    position: relative;
+}
+.hp_curtain_effect_img_container {
+    position: absolute;
+    clip-path: polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%);
+    overflow: clip;
+}
+.hp_curtain_effect_img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+}
+
+.hp_curtain_effect_img_container:nth-child(1) {
+    z-index: 1;
+}
+.hp_curtain_effect_img_container:nth-child(2) {
+    z-index: 2;
+}
+.hp_curtain_effect_img_container:nth-child(3) {
+    z-index: 3;
+}
+.hp_curtain_effect_img_container:nth-child(4) {
+    z-index: 4;
+}
