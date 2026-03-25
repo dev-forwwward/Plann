@@ -2,7 +2,7 @@ export function works() {
 
     const worksSection = document.querySelector('.work_section');
 
-    if (worksSection) {
+    if (worksSection && window.innerWidth > window.tabletBreakpoint) {
         let incr = 0
 
         const root = worksSection.querySelector('.work_root');

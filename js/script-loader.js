@@ -11,6 +11,9 @@ import { form } from './form.js';
 import { footerDate } from './footer-date.js';
 
 
+window.tabletBreakpoint = 991;
+window.mobileBreakpoint = 767;
+
 function init() {
     mainInit();
     navBarMenu();

@@ -78,7 +78,7 @@ export function homepage() {
 
         // IMG SLIDE CURTAIN
         const hpServices = document.querySelector('.section_services');
-        if (hpServices) {
+        if (hpServices && window.innerWidth > window.mobileBreakpoint) {
             gsap.timeline({
                 scrollTrigger: {
                     trigger: hpServices,
@@ -153,7 +153,7 @@ export function homepage() {
             })
         }
         // }, 250);
-
+        
         console.log("running homepage()");
     }); // fonts ready
 }
