@@ -1,7 +1,5 @@
 export function homepage() {
 
-    // setTimeout(() => {
-
     document.fonts.ready.then(() => {
         // FOLLOWUP SECTION - text animation
         const heroFollowupContent = document.querySelector('.hp_hero_followup_content_wrapper');
@@ -88,15 +86,15 @@ export function homepage() {
                     scrub: true,
                 }
             })
-            .to({},{
-                duration: .25
-            })
-            .to('.hp_curtain_effect_img_container', {
-                clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
-                stagger: 1.55,
-                ease: 'none',
-                duration: 1.5
-            });
+                .to({}, {
+                    duration: .25
+                })
+                .to('.hp_curtain_effect_img_container', {
+                    clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
+                    stagger: 1.55,
+                    ease: 'none',
+                    duration: 1.5
+                });
         }
 
         // TEAM SECTION - text animation
@@ -107,53 +105,72 @@ export function homepage() {
             const cards = document.querySelectorAll('.hp_team_list_card')
             const distance = cardsContainer.clientWidth - window.innerWidth
 
-            const scrollTween = gsap.to(cardsContainer, {
-                x: - distance,
-                ease: 'none', // linear progression
-                // let's pin our container while our cardsContainer is animating
-                scrollTrigger: {
-                    trigger: teamSection,
-                    // pin: true,
-                    scrub: true, // progress with the scroll
-                    start: 'top 85%',
-                    // end: '+=' + distance
-                    end: 'bottom top'
-                }
-            });
 
-            cards.forEach(card => {
-                const values = {
-                    // get a value between 30 and 50 or -30 and -50
-                    x: (Math.random() * 20 + 30) * (Math.random() < 0.5 ? 1 : -1),
-                    // get a value between 10 and 16 or -16 and -10
-                    y: (Math.random() * 6 + 10) * (Math.random() < 0.5 ? 1 : -1),
-                    // get a value between 10 and 20 or -10 and -20
-                    rotation: (Math.random() * 10 + 10) * (Math.random() < 0.5 ? 1 : -1)
-                };
-
-                gsap.fromTo(card, {
-                    // let's start from this 3 values
-                    rotation: values.rotation,
-                    xPercent: values.x,
-                    yPercent: values.y
-                }, {
-                    // and finish to its 3 opposite values
-                    rotation: - values.rotation,
-                    xPercent: - values.x,
-                    yPercent: - values.y,
-                    ease: 'none', // linear progression
+            setTimeout(() => {
+                const scrollTween = gsap.to(cardsContainer, {
+                    x: - distance,
+                    ease: 'none',
                     scrollTrigger: {
-                        trigger: card,
-                        containerAnimation: scrollTween, // our tween will listen to our scrollTween container position
-                        start: 'left 120%',
-                        end: 'right -20%',
-                        scrub: true, // the animation progress with the scroll
+                        trigger: teamSection,
+                        pin: true,
+                        scrub: true,
+                        start: 'top top',
+                        // end: '+=100%'
+                        end: '+=' + distance
+                        // end: 'bottom top'
                     }
-                })
-            })
+                });
+
+
+
+                if (window.innerWidth > 767) {
+                    cards.forEach(card => {
+                        const values = {
+                            // get a value between 30 and 50 or -30 and -50
+                            x: (Math.random() * 20 + 30) * (Math.random() < 0.5 ? 1 : -1),
+                            // get a value between 10 and 16 or -16 and -10
+                            y: (Math.random() * 6 + 10) * (Math.random() < 0.5 ? 1 : -1),
+                            // get a value between 10 and 20 or -10 and -20
+                            rotation: (Math.random() * 10 + 10) * (Math.random() < 0.5 ? 1 : -1)
+                        };
+                        gsap.fromTo(card, {
+                            rotation: values.rotation,
+                            xPercent: values.x,
+                            yPercent: values.y
+                        }, {
+                            rotation: - values.rotation,
+                            xPercent: - values.x,
+                            yPercent: - values.y,
+                            ease: 'none', // linear progression
+                            scrollTrigger: {
+                                trigger: card,
+                                containerAnimation: scrollTween, // tween will listen to scrollTween container position
+                                start: 'left 120%',
+                                end: 'right -20%',
+                                scrub: true,
+                            }
+                        })
+                    });
+                } else {
+                    gsap.fromTo('.hp_team_list_container', {
+                        xPercent: 0,
+                    }, {
+                        delay: .5,
+                        xPercent: -100,
+                        ease: 'none', // linear progression
+                        scrollTrigger: {
+                            // trigger: card,
+                            containerAnimation: scrollTween,
+                            start: 'left 120%',
+                            end: 'right -20%',
+                            scrub: true,
+                        }
+                    })
+                }
+
+            }, 200)
         }
-        // }, 250);
-        
+
         console.log("running homepage()");
     }); // fonts ready
 }
