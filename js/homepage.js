@@ -1,6 +1,52 @@
 export function homepage() {
 
     document.fonts.ready.then(() => {
+        // HERO
+        const slot = document.getElementById('slot');
+        const track = document.getElementById('track');
+
+        let lineH;
+
+        // Append clone of first word as 5th sibling
+        track.appendChild(track.children[0].cloneNode(true));
+
+        // Slot width = widest word
+        slot.style.width = Math.max(...Array.from(track.children).map(c => c.scrollWidth)) + 'px';
+
+        setTimeout(() => {
+            const wordCount = track.children.length - 1; // 4 real words (5th is clone)
+            lineH = slot.offsetHeight; // height in px
+            gsap.set('.word-item', {
+                height: lineH
+            });
+
+            const tl = gsap.timeline({ repeat: -1, paused: false });
+
+            for (let i = 1; i <= wordCount; i++) {
+                tl.to(track, {
+                    y: () => { return `-${i * lineH}px` },
+                    duration: 1,
+                    ease: 'power2.inOut'
+                }, '+=1.5')
+            }
+
+            // Snap back to start instantly after landing on the clone
+            tl.set(track, { y: 0 });
+        }, 350);
+
+        window.addEventListener('resize', () => {
+            // update above values
+            slot.style.width = Math.max(...Array.from(track.children).map(c => c.scrollWidth)) + 'px';
+            lineH = slot.offsetHeight; // height in px
+            gsap.set('.word-item', {
+                height: lineH
+            });
+        });
+
+
+
+
+
         // FOLLOWUP SECTION - text animation
         const heroFollowupContent = document.querySelector('.hp_hero_followup_content_wrapper');
         if (heroFollowupContent) {
@@ -117,7 +163,7 @@ export function homepage() {
                         start: 'top top',
                         // end: '+=100%'
                         end: '+=' + distance
-                        // end: 'bottom top'
+                        // end: 'bottom top',
                     }
                 });
 
