@@ -108,6 +108,17 @@
     flex: 0;
 }
 
+.card-row39_area:hover .card_row_desc_container {
+    margin-top: 1rem;
+    height: max-content;
+    opacity: 1;
+}
+
+.card-row39_area:hover .card-row39_icon_container {
+    transform: rotateZ(180deg);
+}
+
+
 /*
 *   ABOUT - Team Section
 */
