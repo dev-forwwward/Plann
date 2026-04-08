@@ -17,10 +17,10 @@
         color: initial;
     }
 
-    .menu-icon2_line-top,
+    /* .menu-icon2_line-top,
     .menu-icon2_line-bottom {
         background-color: var(--_primitives---colors--white);
-    }
+    } */
 
     /* .padding-global.nav-top,
     .nav-left-line,
@@ -62,6 +62,11 @@
     .menu-icon2_line-top,
     .menu-icon2_line-bottom {
         background-color: var(--_primitives---colors--white);
+    }
+
+    [data-wf--navbar-main--variant="light"] .menu-icon2_line-top,
+    [data-wf--navbar-main--variant="light"] .menu-icon2_line-bottom {
+        background-color: var(--neutral-900);
     }
 
     .nav_logo {
@@ -112,7 +117,7 @@
 *   NAV Dynamic Color Feature - changes theme over lighter and darker sections
 *   depending on initial navbar status (Base/Light)
 */
-.navbar.lighter {
+body:not(.navbar-menu-open) .navbar.lighter {
     .nav_logo,
     .mobile-menu-button {
         background-color: var(--neutral-200);
@@ -133,7 +138,7 @@
     }
 }
 
-.navbar.darker {
+body:not(.navbar-menu-open) .navbar.darker {
     .nav_logo,
     .mobile-menu-button {
         -webkit-backdrop-filter: blur(12px);
@@ -143,7 +148,8 @@
     }
 
     .nav_button_icon > div {
-        background-color: #ffffff0a;
+        /* background-color: #ffffff0a; */
+        background-color: var(--neutral-100);
     }
 
     .menu-link {
@@ -152,6 +158,8 @@
         backdrop-filter: blur(12px);
         color: var(--neutral-100);
     }
+
+
 }
 
 
