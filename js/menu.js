@@ -12,7 +12,20 @@ export function navBarMenu() {
     // Hide initially with class
     //mobileMenu.classList.add('is-hidden');
 
+
+    // URL language check
+    const localesContainer = document.querySelector('.locales-container');
+    if (localesContainer) {
+        if (window.location.href.endsWith('pt')) {
+            localesContainer.classList.add('pt-lang');
+        } else {
+            localesContainer.classList.remove('pt-lang');
+        }
+    }
+
+
     trigger.addEventListener("click", function (event) {
+        console.log("click");
         event.stopPropagation();
 
         const isOpen = menuNavBar.classList.contains("w--open");

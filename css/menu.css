@@ -53,6 +53,10 @@
 
 .navbar-menu-open {
 
+    #menu-trigger {
+        background-color: transparent;
+    }
+
     .navbar {
         background-color: var(--base-color-brand--eerie-black);
         border-color: var(--base-color-brand--eerie-black);
@@ -159,12 +163,42 @@ body:not(.navbar-menu-open) .navbar.darker {
         color: var(--neutral-100);
     }
 
+}
 
+body.is-homepage .md_menu_inner_cols {
+    background: rgba(18,32,35,.5);
+}
+body.is-homepage.navbar-menu-open .md_menu_inner_cols .nav_menu_bg_gradient {
+    opacity: 1;
+}
+
+/*
+*   Multi-lang Button
+*/
+.locale::before {
+    content: '';
+    position: absolute;
+    top: .25rem;
+    left: .25rem;
+    height: 2.375rem;
+    width: 2.75rem;
+    background-color: var(--neutral-700);
+    z-index: -1;
+    border-radius: .5rem;
+    transition: left .2s ease;
+}
+
+[data-wf--navbar-main--variant="light"] .locale::before {
+    background-color: var(--neutral-300);
+}
+
+.locales-container.pt-lang .locale::before {
+    left: calc(.25rem + 2.75rem);
 }
 
 
 /*
-* Submenu hover
+*   Submenu hover
 */
 
 #submenu-image {
