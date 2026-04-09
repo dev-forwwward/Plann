@@ -14,12 +14,17 @@ export function navBarMenu() {
 
 
     // URL language check
-    const localesContainer = document.querySelector('.locales-container');
-    if (localesContainer) {
+    const localesContainer = document.querySelectorAll('.locales-container');
+    if (localesContainer.length > 0) {
         if (window.location.href.endsWith('pt')) {
-            localesContainer.classList.add('pt-lang');
+            localesContainer.forEach((locales) => {
+                locales.classList.add('pt-lang');
+            });
+
         } else {
-            localesContainer.classList.remove('pt-lang');
+            localesContainer.forEach((locales) => {
+                locales.classList.remove('pt-lang');
+            });
         }
     }
 
