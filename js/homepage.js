@@ -2,48 +2,90 @@ export function homepage() {
 
     document.fonts.ready.then(() => {
         // HERO
-        const slot = document.getElementById('slot');
-        const track = document.getElementById('track');
+        const hpHeroSection = document.querySelector('.section_hero_hp');
 
-        let lineH;
+        if (hpHeroSection) {
 
-        // Append clone of first word as 5th sibling
-        track.appendChild(track.children[0].cloneNode(true));
-
-        // Slot width = widest word
-        slot.style.width = Math.max(...Array.from(track.children).map(c => c.scrollWidth)) + 'px';
-
-        setTimeout(() => {
-            const wordCount = track.children.length - 1; // 4 real words (5th is clone)
-            lineH = slot.offsetHeight; // height in px
-            gsap.set('.word-item', {
-                height: lineH
-            });
-
-            const tl = gsap.timeline({ repeat: -1, paused: false });
-
-            for (let i = 1; i <= wordCount; i++) {
-                tl.to(track, {
-                    y: () => { return `-${i * lineH}px` },
+            // Reveal
+            gsap.timeline()
+                .from('.hp_hero_content_wrapper .content_1', {
+                    yPercent: 50,
+                    opacity: 0,
                     duration: 1,
-                    ease: 'power2.inOut'
-                }, '+=1.5')
-            }
+                    delay: 1,
+                    ease: 'power2.out'
+                }).from('.hero_text_content > div', {
+                    yPercent: 50,
+                    opacity: 0,
+                    duration: .8,
+                    stagger: .1,
+                    ease: 'power2.out'
+                }, "-=.5")
+                .from('.hero_text_cotainer .tag', {
+                    yPercent: 10,
+                    opacity: 0,
+                    duration: .25,
+                    stagger: .06,
+                    delay: .5
+                }, "<")
+                .from('.navbar-wrapper', {
+                    yPercent: -100,
+                    duration: 1,
+                    ease: 'power2.out'
+                }, "<");
 
-            // Snap back to start instantly after landing on the clone
-            tl.set(track, { y: 0 });
-        }, 350);
 
-        window.addEventListener('resize', () => {
-            // update above values
-            slot.style.width = Math.max(...Array.from(track.children).map(c => c.scrollWidth)) + 'px';
-            lineH = slot.offsetHeight; // height in px
-            gsap.set('.word-item', {
-                height: lineH
+            // Word Slot Roll Effect
+            const slot = document.getElementById('slot');
+            const track = document.getElementById('track');
+
+            let lineH;
+
+            // Append clone of first word as 5th sibling
+            track.appendChild(track.children[0].cloneNode(true));
+
+            // Slot width = widest word
+            let widthExtra = 8; // give it an extra 8px space to make sure nothing gets cut
+            slot.style.width = Math.max(...Array.from(track.children).map(c => c.scrollWidth)) + widthExtra + 'px';
+
+            setTimeout(() => {
+                const wordCount = track.children.length - 1; // 4 real words (5th is clone)
+                lineH = slot.offsetHeight; // height in px
+                gsap.set('.word-item', {
+                    height: lineH
+                });
+
+                const tl = gsap.timeline({ repeat: -1, paused: false });
+
+                for (let i = 1; i <= wordCount; i++) {
+                    tl.to(track, {
+                        y: () => { return `-${i * lineH}px` },
+                        duration: 1,
+                        ease: 'power2.inOut'
+                    }, '+=1.5')
+                }
+
+                // Snap back to start instantly after landing on the clone
+                tl.set(track, { y: 0 });
+            }, 350);
+
+            window.addEventListener('resize', () => {
+                // update above values
+                slot.style.width = Math.max(...Array.from(track.children).map(c => c.scrollWidth)) + 'px';
+                lineH = slot.offsetHeight; // height in px
+                gsap.set('.word-item', {
+                    height: lineH
+                });
             });
-        });
-
-
+        } else {
+            // Anywhere else that is not the homepage
+            gsap.from('.navbar-wrapper', {
+                yPercent: -100,
+                duration: 1,
+                delay: 1,
+                ease: 'power2.out'
+            });
+        }
 
 
 
