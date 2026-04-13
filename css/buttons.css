@@ -1,7 +1,7 @@
 /*
 *   Button w/ Icon
 */
-.button.is-icon:hover {
+.button.is-icon:not(.form_submit_btn_wrapper):hover {
     padding-right: 1rem;
     padding-left: 3rem;
 }
