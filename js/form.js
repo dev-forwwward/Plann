@@ -23,6 +23,9 @@ export function form() {
                         required: true,
                         email: true,
                         customEmail: true, // Add the customEmail validation
+                    },
+                    yourcompany: {
+                        required: false
                     }
                 },
                 messages: {

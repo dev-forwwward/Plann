@@ -4,6 +4,8 @@ form label.error {
     line-height: 130%;
     top: 0;
     opacity: 0;
+    margin-bottom: .5rem;
+    white-space: nowrap;
     visibility: hidden;
     visibility: hidden;
     transition: opacity 0.3s ease 0.3s, visibility 0s linear 0.3s;
@@ -15,7 +17,7 @@ form label.error::before {
 }
 
 form label.error.show {
-    opacity: 1;
+    opacity: .8;
     visibility: visible;
     transition: opacity 0.3s ease, visibility 0s linear 0s;
 }
