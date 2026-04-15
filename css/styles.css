@@ -105,8 +105,10 @@
 /*
 *   SERVICES - Custom Nav
 */
-.layout350_tabs-menu_wrapper.shrink {
-    flex: 0;
+@media screen and (min-width: 991px) {
+    .layout350_tabs-menu_wrapper.shrink {
+        flex: 0;
+    }
 }
 
 .card-row39_area:hover .card_row_desc_container {
