@@ -15,3 +15,16 @@
     right: -1.5rem;
     opacity: 0;
 }
+
+
+/*
+*   Scroll Down Button
+*/
+.button.is-icon.is-alternate-2:hover .btn_arrow_container.left {
+    left: .5rem;
+}
+
+.button.is-secondary.is-icon.is-alternate.is-alternate-2:hover {
+    padding-left: 2.5rem;
+    padding-right: .75rem;
+}
