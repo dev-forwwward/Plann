@@ -17,6 +17,10 @@
     color: white;
 }
 
+.job_count {
+    margin-right: -.2rem;
+}
+
 /*
 *   RICH TEXT HEADINGS
 */

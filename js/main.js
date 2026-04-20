@@ -58,6 +58,22 @@ export function mainInit() {
     }
 
 
+    // Job offers dynamic text
+    // this code block counts the number of '.content5_job_opening' elements (job offers) and 
+    // updates the Careers hero button text content
+    const jobOffers = document.querySelectorAll('.content5_job_opening');
+    const seeOffersBtn = document.querySelector('.job_offers_btn_container .button');
+    if(jobOffers.length > 0 && seeOffersBtn) {
+        const firstIconContainer = seeOffersBtn.querySelector('.btn_arrow_container');
+        if(firstIconContainer) {
+            // if button has a icons, insert the count after the first icon container (which is only seen on hover)
+            firstIconContainer.insertAdjacentHTML('afterend', `<span class="job_count">${jobOffers.length}</span>`);
+        } else {
+            // if no icons, just add the count at the beginning of the button
+            seeOffersBtn.insertAdjacentHTML('afterbegin', `<span class="job_count">${jobOffers.length}</span>`);
+        }
+    }
+
 
     console.log("Loading mainInit()");
 
