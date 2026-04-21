@@ -210,7 +210,6 @@ export function homepage() {
                 ScrollTrigger.create({
                     trigger: '.section_hp_team_wrapper',
                     pin: true,
-                    markers: true,
                     start: 'top top',
                     end: '+=' + distance * .6
                 });
