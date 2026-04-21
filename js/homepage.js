@@ -195,21 +195,25 @@ export function homepage() {
 
 
             setTimeout(() => {
+
                 const scrollTween = gsap.to(cardsContainer, {
                     x: - distance,
                     ease: 'none',
                     scrollTrigger: {
                         trigger: teamSection,
-                        pin: true,
                         scrub: true,
-                        start: 'top top',
-                        // end: '+=100%'
+                        start: 'top bottom',
                         end: '+=' + distance
-                        // end: 'bottom top',
                     }
                 });
 
-
+                ScrollTrigger.create({
+                    trigger: '.section_hp_team_wrapper',
+                    pin: true,
+                    markers: true,
+                    start: 'top top',
+                    end: '+=' + distance * .6
+                });
 
                 if (window.innerWidth > 767) {
                     cards.forEach(card => {
