@@ -191,7 +191,7 @@ export function homepage() {
             const container = document.querySelector('.hp_team_list_container')
             const cardsContainer = container.querySelector('.hp_team_list_cards')
             const cards = document.querySelectorAll('.hp_team_list_card')
-            const distance = cardsContainer.clientWidth - window.innerWidth
+            const distance = (cardsContainer.clientWidth - window.innerWidth) * 1.2
 
 
             setTimeout(() => {

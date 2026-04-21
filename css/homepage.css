@@ -53,3 +53,20 @@
         z-index: 4;
     }
 }
+
+
+@media screen and (min-width: 768px) {
+    .hp_team_list_container.swiper {
+        overflow: visible;
+    }
+    /* .hp_team_list_container .swiper-wrapper {
+        display: flex;
+        width: auto;
+        transform: none !important;
+    } */
+    .hp_team_list_container .swiper-slide {
+        flex-shrink: unset;
+        width: auto;
+        height: auto;
+    }
+}
