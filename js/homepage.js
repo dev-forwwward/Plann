@@ -187,7 +187,7 @@ export function homepage() {
 
         // TEAM SECTION - text animation
         const teamSection = document.querySelector('.section_hp_team.hp_team_card_effect');
-        if (teamSection) {
+        if (teamSection && window.innerWidth > window.mobileBreakpoint) {
             const container = document.querySelector('.hp_team_list_container')
             const cardsContainer = container.querySelector('.hp_team_list_cards')
             const cards = document.querySelectorAll('.hp_team_list_card')

@@ -63,6 +63,22 @@ export function swiperInit() {
 
     }
 
+    // Homepage team slider - mobile only
+    const hpTeamSwiperContainer = document.querySelector('.swiper.hp_team_list_container');
+    if (hpTeamSwiperContainer && window.innerWidth <= window.mobileBreakpoint) {
+        const teamSwiper = new Swiper(hpTeamSwiperContainer, {
+            slidesPerView: 1.2,
+            spaceBetween: 14,
+            loop: false,
+            breakpoints: {
+                // for screens 420px wide and up
+                420: {
+                    slidesPerView: 1.5
+                }
+            }
+        });
+    }
+
     // ABOUT Team Swiper
     const teamSwiperContainer = document.querySelector('.team_card_list_swiper');
     if (teamSwiperContainer && window.innerWidth <= 767) {
