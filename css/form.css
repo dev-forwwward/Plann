@@ -1,15 +1,22 @@
 /* Validation errors */
 form label.error {
-    font-size: 0.875rem;
-    line-height: 130%;
-    top: 0;
-    opacity: 0;
-    margin-bottom: .5rem;
-    white-space: nowrap;
-    visibility: hidden;
-    visibility: hidden;
-    transition: opacity 0.3s ease 0.3s, visibility 0s linear 0.3s;
-    color: var(--color-scheme-1--error-message);
+  font-family: var(--_typography---font-styles--tag);
+  font-size: 0.75rem;
+  line-height: 125%;
+  font-weight: 600;
+  letter-spacing: .05em;
+  top: 0;
+  opacity: 0;
+  margin-bottom: .5rem;
+  white-space: nowrap;
+  visibility: hidden;
+  visibility: hidden;
+  transition: opacity 0.3s ease 0.3s, visibility 0s linear 0.3s;
+  color: var(--color-scheme-1--error-message);
+}
+
+form .form_input.error {
+  border-color: var(--color-scheme-1--error-message);
 }
 
 form label.error::before {
@@ -17,15 +24,15 @@ form label.error::before {
 }
 
 form label.error.show {
-    opacity: .8;
-    visibility: visible;
-    transition: opacity 0.3s ease, visibility 0s linear 0s;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.3s ease, visibility 0s linear 0s;
 }
 
 @media screen and (max-width: 480px) {
-    .email-example {
-        display: none;
-    }
+  .email-example {
+    display: none;
+  }
 }
 
 /* Hide native checkbox */
