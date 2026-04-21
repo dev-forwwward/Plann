@@ -43,6 +43,17 @@ export function about() {
                         teamNavLinks[i].classList.remove('active');
                     },
                 });
+            } else {
+                // mobile view
+                // 'read more' feature
+
+                const readMoreBtn = card.querySelector('.read_more');
+                if(readMoreBtn) {
+                    readMoreBtn.addEventListener('click', () => {
+                        card.classList.toggle('show_full_bio');
+                    });
+                }
+
             }
 
             // add on-click navigation (desktop/mobile)

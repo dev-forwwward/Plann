@@ -132,3 +132,18 @@
 .team_list_item.active {
     background-color: var(--neutral-800);
 }
+
+.team_card.show_full_bio {
+
+    .team_desc_container_inner {
+        max-height: max-content;
+    }
+
+    .team_desc_container_gradient {
+        opacity: 0;
+    }
+
+    .read_more {
+        display: none;
+    }
+}
