@@ -31,15 +31,18 @@ export function mainInit() {
     }
 
     // Preloader
-    gsap.to('.preloader', {
-        opacity: 0,
-        delay: .1,
-        duration: .5,
-        ease: "power2.out",
-        onComplete: () => {
-            document.querySelector('.preloader').remove();
-        }
-    });
+    const preloaderEl = document.querySelector('.preloader');
+    if (preloaderEl) {
+        gsap.to(preloaderEl, {
+            opacity: 0,
+            delay: .1,
+            duration: .5,
+            ease: "power2.out",
+            onComplete: () => {
+                preloaderEl.remove();
+            }
+        });
+    }
 
 
     // Generic Hero Fade-in
@@ -63,9 +66,9 @@ export function mainInit() {
     // updates the Careers hero button text content
     const jobOffers = document.querySelectorAll('.content5_job_opening');
     const seeOffersBtn = document.querySelector('.job_offers_btn_container .button');
-    if(jobOffers.length > 0 && seeOffersBtn) {
+    if (jobOffers.length > 0 && seeOffersBtn) {
         const firstIconContainer = seeOffersBtn.querySelector('.btn_arrow_container');
-        if(firstIconContainer) {
+        if (firstIconContainer) {
             // if button has a icons, insert the count after the first icon container (which is only seen on hover)
             firstIconContainer.insertAdjacentHTML('afterend', `<span class="job_count">${jobOffers.length}</span>`);
         } else {
