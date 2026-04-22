@@ -67,7 +67,7 @@ export function swiperInit() {
     const hpTeamSwiperContainer = document.querySelector('.swiper.hp_team_list_container');
     if (hpTeamSwiperContainer && window.innerWidth <= window.mobileBreakpoint) {
         const teamSwiper = new Swiper(hpTeamSwiperContainer, {
-            slidesPerView: 1.2,
+            slidesPerView: .99,
             spaceBetween: 14,
             loop: false,
             breakpoints: {
