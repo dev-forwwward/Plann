@@ -115,6 +115,13 @@
     }
 }
 
+@media screen and (max-width: 767px) {
+    .layout350_tab-link.is-active {
+        background-color: var(--color-scheme-1--highlight);
+        color: var(--color-scheme-1--text);
+    }
+}
+
 .card-row39_area:hover .card_row_desc_container {
     margin-top: 1rem;
     height: max-content;

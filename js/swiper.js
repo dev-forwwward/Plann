@@ -63,7 +63,7 @@ export function swiperInit() {
 
     }
 
-    // Homepage team slider - mobile only
+    // HOMEPAGE team slider - mobile only
     const hpTeamSwiperContainer = document.querySelector('.swiper.hp_team_list_container');
     if (hpTeamSwiperContainer && window.innerWidth <= window.mobileBreakpoint) {
         const teamSwiper = new Swiper(hpTeamSwiperContainer, {
@@ -107,6 +107,41 @@ export function swiperInit() {
         document.querySelectorAll('.team_list_item').forEach((item, index) => {
             item.addEventListener('click', () => {
                 hpWorksSwiper.slideTo(index);
+            });
+        });
+    }
+
+    // SERVICES Mobile Swiper
+    const servicesSwiperContainer = document.querySelector('.swiper.layout350_component');
+    if (servicesSwiperContainer && window.innerWidth <= 767) {
+        const tabLinks = document.querySelectorAll('a.layout350_tab-link');
+
+        // update nav links active state based on active swiper slide
+        function updateTabLinks(activeIndex) {
+            tabLinks.forEach((link, i) => {
+                link.classList.toggle('is-active', i === activeIndex);
+            });
+        }
+
+        const servicesSwiper = new Swiper(servicesSwiperContainer, {
+            slidesPerView: 1,
+            spaceBetween: 0,
+            loop: false,
+            effect: "fade",
+            on: {
+                slideChange() {
+                    updateTabLinks(this.activeIndex);
+                },
+                init() {
+                    updateTabLinks(this.activeIndex);
+                },
+            },
+        });
+
+        tabLinks.forEach((link, index) => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                servicesSwiper.slideTo(index);
             });
         });
     }
