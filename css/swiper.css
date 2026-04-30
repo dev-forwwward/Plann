@@ -1,7 +1,33 @@
 /*
+*   SERVICES - Services Section
+*/
+@media screen and (min-width: 768px) {
+    .layout350_component.swiper {
+        display: grid;
+        position: relative;
+        transform: none;
+        overflow: visible;
+    }
+
+    .layout350_content-wrapper.swiper-wrapper {
+        width: auto;
+        height: auto;
+        transform: none;
+    }
+
+    .layout350_content.swiper-slide {
+        display: flex;
+        height: 100vh;
+        width: auto;
+        flex-shrink: none;
+        position: static;
+    }
+}
+
+
+/*
 *   ABOUT - Team Section
 */
-
 @media screen and (min-width: 768px) {
     .swiper-wrapper.team_card_list_container .swiper-slide {
         height: auto;
