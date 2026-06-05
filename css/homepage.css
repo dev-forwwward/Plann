@@ -17,6 +17,26 @@
     white-space: nowrap;
 }
 
+@media screen and (min-width: 991px) and (max-width: 1150px) {
+    .hp_hero_h1_container {
+        font-size: 6rem;
+    }
+}
+
+
+/* WORKS */
+.work_item_container:hover .arrow_container {
+    .right {
+        right: -1.5rem;
+        opacity: 0;
+    }
+
+    .left {
+        left: .35rem;
+        opacity: 1;
+    }
+}
+
 
 /* Followup section - Moving Letters */
 .hp_hero_followup_content_wrapper .letter {
