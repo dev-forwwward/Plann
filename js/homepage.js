@@ -45,7 +45,7 @@ export function homepage() {
             track.appendChild(track.children[0].cloneNode(true));
 
             // Slot width = widest word
-            let widthExtra = 8; // give it an extra 8px space to make sure nothing gets cut
+            let widthExtra = 6; // give it an extra 8px space to make sure nothing gets cut
             slot.style.width = Math.max(...Array.from(track.children).map(c => c.scrollWidth)) + widthExtra + 'px';
 
             setTimeout(() => {
@@ -87,7 +87,14 @@ export function homepage() {
             });
         }
 
-
+        const tabsList = document.querySelectorAll('.layout493_tab-link');
+        if(tabsList) {
+            tabsList.forEach(tab => {
+                tab.addEventListener('mouseenter', () => {
+                    tab.click();
+                });
+            });
+        }
 
         // FOLLOWUP SECTION - text animation
         const heroFollowupContent = document.querySelector('.hp_hero_followup_content_wrapper');
