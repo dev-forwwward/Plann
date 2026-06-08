@@ -1,6 +1,7 @@
 export function works() {
 
     const worksSection = document.querySelector('.work_section');
+    const workCardSection = document.querySelector('.work_card_section'); // this section is unique to the WORKS page
 
     // Work Case Link Redirect (for case links in Homepage and Works)
     const workCaseLinks = document.querySelectorAll('.work_slide_inner');
@@ -11,7 +12,7 @@ export function works() {
     }
 
 
-    if (worksSection && window.innerWidth > window.tabletBreakpoint) {
+    if (worksSection && workCardSection && window.innerWidth > window.tabletBreakpoint) {
         let incr = 0
 
         const root = worksSection.querySelector('.work_root');

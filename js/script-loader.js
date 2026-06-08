@@ -22,10 +22,10 @@ function init() {
     services();
     about();
     works();
+    menuDynamicTheme();
     swiperInit();
     form();
     footerDate();
-    menuDynamicTheme();
 
     console.log("Running main scripts loader");
 }
