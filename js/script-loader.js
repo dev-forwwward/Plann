@@ -5,6 +5,7 @@ import { navBarMenu } from './menu.js';
 import { homepage } from './homepage.js';
 import { services } from './services.js';
 import { about } from './about.js';
+import { reveals } from './reveals.js';
 import { swiperInit } from './swiper.js';
 import { works } from './works.js';
 import { form } from './form.js';
@@ -22,6 +23,7 @@ function init() {
     services();
     about();
     works();
+    reveals();
     menuDynamicTheme();
     swiperInit();
     form();
