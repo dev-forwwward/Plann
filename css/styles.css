@@ -123,8 +123,7 @@
 }
 
 .card-row39_area:hover .card_row_desc_container {
-    margin-top: 1rem;
-    height: max-content;
+    margin-top: 0;
     opacity: 1;
 }
 
