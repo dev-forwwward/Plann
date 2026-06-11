@@ -6,7 +6,7 @@ export function menuDynamicTheme() {
 
     const navBar = document.querySelector('.navbar');
     const lightSections = document.querySelectorAll('.light_section');
-    const darkSections = document.querySelectorAll('.dark_section');
+    // const darkSections = document.querySelectorAll('.dark_section');
 
     setTimeout(() => {
         lightSections.forEach((section) => {
@@ -29,25 +29,25 @@ export function menuDynamicTheme() {
             });
         });
 
-        darkSections.forEach((section) => {
-            ScrollTrigger.create({
-                trigger: section,
-                start: 'clamp(top top)',
-                end: 'clamp(bottom top)',
-                onEnter: () => {
-                    navBar.classList.add('darker');
-                },
-                onLeave: () => {
-                    navBar.classList.remove('darker');
-                },
-                onEnterBack: () => {
-                    navBar.classList.add('darker');
-                },
-                onLeaveBack: () => {
-                    navBar.classList.remove('darker');
-                }
-            });
-        });
+        // darkSections.forEach((section) => {
+        //     ScrollTrigger.create({
+        //         trigger: section,
+        //         start: 'clamp(top top)',
+        //         end: 'clamp(bottom top)',
+        //         onEnter: () => {
+        //             navBar.classList.add('darker');
+        //         },
+        //         onLeave: () => {
+        //             navBar.classList.remove('darker');
+        //         },
+        //         onEnterBack: () => {
+        //             navBar.classList.add('darker');
+        //         },
+        //         onLeaveBack: () => {
+        //             navBar.classList.remove('darker');
+        //         }
+        //     });
+        // });
     }, 350);
 
     console.log("menuDynamicTheme");
