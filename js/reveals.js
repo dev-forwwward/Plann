@@ -5,12 +5,15 @@ export function reveals() {
     if (revealElements.length > 0) {
         revealElements.forEach((el) => {
             const split = new SplitText(el, { type: 'words' });
+            const val = el.getAttribute('text-reveal');
+            const duration = val !== '' ? parseFloat(val) : .8;
+            const stagger = duration > .8 ? .05 : .025;
 
             gsap.from(split.words, {
                 opacity: 0,
                 yPercent: 25,
-                duration: .8,
-                stagger: 0.09,
+                duration,
+                stagger,
                 scrollTrigger: {
                     trigger: el,
                     start: 'top 60%',
@@ -23,14 +26,17 @@ export function reveals() {
     const fadeinElements = document.querySelectorAll('[fade-in]');
     if (fadeinElements.length > 0) {
         fadeinElements.forEach((el) => {
+            const val = el.getAttribute('fade-in');
+            const duration = val !== '' ? parseFloat(val) : .8;
 
             gsap.from(el, {
                 opacity: 0,
+                delay: 1,
                 yPercent: 25,
-                duration: .8,
+                duration,
                 scrollTrigger: {
                     trigger: el,
-                    start: 'top 70%',
+                    start: 'top 80%',
                     toggleActions: 'play none none none',
                 },
             });
@@ -43,6 +49,7 @@ export function reveals() {
 
             gsap.from(tag, {
                 opacity: 0,
+                delay: .2,
                 yPercent: 25,
                 duration: .8,
                 scrollTrigger: {
