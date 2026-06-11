@@ -11,8 +11,8 @@ export function homepage() {
                 .from('.hp_hero_content_wrapper .content_1', {
                     yPercent: 50,
                     opacity: 0,
-                    duration: 1,
-                    delay: 1,
+                    duration: .5,
+                    delay: .4,
                     ease: 'power2.out'
                 }).from('.hero_text_content > div', {
                     yPercent: 50,
@@ -20,13 +20,13 @@ export function homepage() {
                     duration: .8,
                     stagger: .1,
                     ease: 'power2.out'
-                }, "-=.5")
+                }, "-=.25")
                 .from('.hero_text_cotainer .tag', {
                     yPercent: 10,
                     opacity: 0,
                     duration: .25,
                     stagger: .06,
-                    delay: .5
+                    delay: .25
                 }, "<")
                 .from('.navbar-wrapper', {
                     yPercent: -100,
