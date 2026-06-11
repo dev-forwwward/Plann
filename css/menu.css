@@ -162,31 +162,43 @@ body:not(.navbar-menu-open) .navbar.lighter {
 body:not(.navbar-menu-open) .navbar.darker {
     .nav_logo,
     .mobile-menu-button {
-        -webkit-backdrop-filter: blur(12px);
-        backdrop-filter: blur(12px);
         color: var(--neutral-100);
-        background-color: #ffffff0a;
+        background-color: var(--neutral-800);
     }
 
     .nav_button_icon > div {
         /* background-color: #ffffff0a; */
-        background-color: var(--neutral-100);
+        background-color: var(--neutral-800);
     }
 
     .locale {
-        background-color: rgba(255, 255, 255, 0.04);
+        background-color: var(--neutral-800);
         color: var(--neutral-100);
     }
 
-    .locale::before {
+    .locale-link:hover {
+        background-color: #ffffff0a;
+    }
+
+    .locale-link.w--current {
+        background-color: #fff3;
+    }
+
+    /* .locale::before {
+        background-color: var(--neutral-700);
+    } */
+
+    .menu-link {
+        background-color: var(--neutral-800);
+        color: var(--neutral-100);
+    }
+
+    .menu-link:hover {
         background-color: var(--neutral-700);
     }
 
-    .menu-link {
-        background-color: #ffffff0a;
-        -webkit-backdrop-filter: blur(12px);
-        backdrop-filter: blur(12px);
-        color: var(--neutral-100);
+    .menu-link.w--current {
+        background-color: var(--neutral-900);
     }
 
 }
