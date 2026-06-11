@@ -143,11 +143,19 @@ body:not(.navbar-menu-open) .navbar.lighter {
         background-color: var(--neutral-300);
     }
 
+    .locale-link.w--current {
+        background-color: #EAE1CD;
+    }
+
     .menu-link {
         background-color: var(--neutral-200);
         -webkit-backdrop-filter: none;
         backdrop-filter: none;
         color: var(--neutral-900);
+    }
+
+    .menu-link:hover {
+        background-color: #BEBAA7;
     }
 }
 
@@ -193,7 +201,7 @@ body.is-homepage.navbar-menu-open .md_menu_inner_cols .nav_menu_bg_gradient {
 /*
 *   Multi-lang Button
 */
-.locale::before {
+/* .locale::before {
     content: '';
     position: absolute;
     top: .25rem;
@@ -212,7 +220,7 @@ body.is-homepage.navbar-menu-open .md_menu_inner_cols .nav_menu_bg_gradient {
 
 .locales-container.pt-lang .locale::before {
     left: calc(.25rem + 2.75rem);
-}
+} */
 
 
 /*
