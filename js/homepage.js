@@ -50,7 +50,7 @@ export function homepage() {
 
             setTimeout(() => {
                 const wordCount = track.children.length - 1; // 4 real words (5th is clone)
-                lineH = slot.offsetHeight; // height in px
+                lineH = slot.offsetHeight + 10; // height in px
                 gsap.set('.word-item', {
                     height: lineH
                 });
@@ -96,7 +96,7 @@ export function homepage() {
             });
         }
 
-        // FOLLOWUP SECTION - text animation
+        // FOLLOWUP SECTION - text animation (currently not in use)
         const heroFollowupContent = document.querySelector('.hp_hero_followup_content_wrapper');
         if (heroFollowupContent) {
 
