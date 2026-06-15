@@ -25,8 +25,17 @@
 }
 
 @media screen and (max-width: 767px) {
-    .swiper-slide.layout350_content:not(.swiper-slide-active) {
+    .swiper-slide.layout350_content {
         opacity: 0 !important;
+    }
+
+    .swiper-slide.layout350_content.swiper-slide-active {
+        opacity: 1 !important;
+    }
+
+    .layout350_tab-link.is-active {
+        background-color: var(--color-scheme-1--highlight) !important;
+        color: var(--color-scheme-1--text) !important;
     }
 }
 
