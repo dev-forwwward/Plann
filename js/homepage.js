@@ -266,7 +266,7 @@ export function homepage() {
                     })
                 }
 
-            }, 200)
+            }, 120)
         }
 
         console.log("running homepage()");

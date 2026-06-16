@@ -23,11 +23,11 @@ function init() {
     services();
     about();
     works();
-    reveals();
     menuDynamicTheme();
     swiperInit();
     form();
     footerDate();
+    reveals();
 
     console.log("Running main scripts loader");
 }
