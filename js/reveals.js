@@ -78,8 +78,10 @@ export function reveals() {
                     const val = el.getAttribute('opacity-in');
                     const duration = val !== '' ? parseFloat(val) : .8;
 
-                    gsap.from(el, {
+                    gsap.fromTo(el, {
                         opacity: 0,
+                    },{
+                        opacity: 1,
                         delay: .5,
                         duration,
                         scrollTrigger: {
@@ -131,6 +133,32 @@ export function reveals() {
                         stagger: .08,
                         yPercent: 25,
                         duration,
+                    });
+
+                });
+            }
+
+            // CASCADE INSTANT REVEAL
+            const cascadeInstant = document.querySelectorAll('[cascade-instant]');
+            if (cascadeInstant.length > 0) {
+
+                // gsap.set(cascadeInstant, { opacity: 0 });
+
+                cascadeInstant.forEach((cascadeContainer) => {
+                    const val = cascadeContainer.getAttribute('cascade-instant');
+                    const duration = val !== '' ? parseFloat(val) : .55;
+                    const cascadeCards = cascadeContainer.querySelectorAll('[cascade-el]');
+
+                    gsap.fromTo(cascadeCards, {
+                        opacity: 0,
+                        yPercent: 25,
+                    },{
+                        opacity: 1,
+                        yPercent: 0,
+                        delay: .7,
+                        stagger: .08,
+                        duration,
+                        immediateRender: true,
                     });
 
                 });

@@ -153,3 +153,8 @@
         display: none;
     }
 }
+
+
+[cascade-instant] [cascade-el] {
+    opacity: 0;
+}
