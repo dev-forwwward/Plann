@@ -90,3 +90,57 @@
         height: auto;
     }
 }
+
+@media screen and (min-width: 768px) {
+    .layout493_tab-pane {
+        position: absolute;
+        display: block;
+    }
+
+    .layout493_tab-pane:nth-child(1) {
+        position: relative;
+    }
+}
+
+/* .layout493_tab-pane:nth-child(1) {
+    z-index: 5;
+}
+.layout493_tab-pane:nth-child(2) {
+    z-index: 4;
+}
+.layout493_tab-pane:nth-child(3) {
+    z-index: 3;
+}
+.layout493_tab-pane:nth-child(4) {
+    z-index: 2;
+}
+.layout493_tab-pane:nth-child(5) {
+    z-index: 1;
+} */
+
+ .layout493_tab-pane {
+    z-index: 1;
+ }
+
+ .bg_img_overlay-wrapper,
+ .layout493_tab-pane .bg_img {
+    opacity: 0;
+ }
+
+  .layout493_tab-pane.w--tab-active {
+    z-index: 5;
+  }
+
+ .layout493_tab-pane.w--tab-active .bg_img_overlay-wrapper,
+ .layout493_tab-pane.w--tab-active .bg_img {
+    opacity: 1 !important;
+ }
+
+
+/*
+*   TEAM SECTION
+*/
+.hp_team_list_container .hp_team_card_content:hover .hp_team_card_img.back {
+    opacity: 1;
+    z-index: 5;
+}
