@@ -118,7 +118,17 @@
     z-index: 1;
 } */
 
- .layout493_tab-pane {
+@media screen and (min-width: 768px) {
+     .layout493_tab-link {
+        pointer-events: none;
+    }
+}
+
+#hero-follow-up .btn-container {
+    opacity: 0;
+}
+
+.layout493_tab-pane {
     z-index: 1;
  }
 
@@ -129,12 +139,34 @@
 
   .layout493_tab-pane.w--tab-active {
     z-index: 5;
+    background-color: var(--neutral-100);
   }
 
  .layout493_tab-pane.w--tab-active .bg_img_overlay-wrapper,
  .layout493_tab-pane.w--tab-active .bg_img {
     opacity: 1 !important;
  }
+
+
+/*
+*   WORK SECTION
+*/
+.work_item_container .work_item_image_container img {
+    transition: transform 0.6s ease;
+}
+
+.work_item_container .arrow_container {
+    opacity: 0;
+    transition: all 0.6s ease;
+}
+
+.work_item_container:hover .work_item_image_container img {
+    transform: scale(1.06);
+}
+
+.work_item_container:hover .arrow_container {
+    opacity: 1;
+}
 
 
 /*

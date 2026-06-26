@@ -87,86 +87,74 @@ export function homepage() {
             });
         }
 
-        const tabsList = document.querySelectorAll('.layout493_tab-link');
-        if(tabsList) {
-            tabsList.forEach(tab => {
-                tab.addEventListener('mouseenter', () => {
-                    tab.click();
-                });
-            });
-        }
-
-        // FOLLOWUP SECTION - text animation (currently not in use)
-        const heroFollowupContent = document.querySelector('.hp_hero_followup_content_wrapper');
+        // FOLLOWUP SECTION - text animation reveal
+        const heroFollowupContent = document.querySelector('#hero-follow-up');
         if (heroFollowupContent) {
 
+            const texts = heroFollowupContent.querySelectorAll('h2');
+            texts.forEach((text) => {
+                const split = new SplitText(text, { type: 'words' });
+            });
 
-
-            const text = heroFollowupContent.querySelector('.hp_hero_followup_text');
-            wrapLettersInSpan(text);
-
-            const letters = heroFollowupContent.querySelectorAll('.letter');
-            const distance = text.clientWidth - document.body.clientWidth;
-
-            const scrollTween = gsap.timeline({
+            gsap.fromTo('#hero-follow-up .hero-follow-up-h2 div', {
+                opacity: 0.2
+            }, {
                 scrollTrigger: {
-                    trigger: '.section_hero_hp',
+                    trigger: heroFollowupContent.querySelector('.bg_container'),
+                    start: 'top 60%',
+                    end: 'top top',
+                    scrub: true,
+                    // markers: true
+                },
+                opacity: 1,
+                stagger: .5,
+                duration: 2,
+                ease: 'none'
+            });
+
+            gsap.timeline({
+                scrollTrigger: {
+                    trigger: heroFollowupContent,
                     start: 'top top',
-                    end: '+=' + distance,
+                    end: '+=100%',
                     pin: true,
-                    scrub: true
+                    scrub: true,
+                },
+            }).from('#hero-follow-up .highlight-secondary span', {
+                opacity: 0,
+                stagger: .4,
+                duration: .8,
+                ease: 'none',
+                onComplete: () => {
+                    gsap.to('#hero-follow-up .btn-container', {
+                        opacity: 1,
+                        yPercent: 25,
+                        duration: 1,
+                    });
+                },
+                onReverseComplete: ()=> {
+                    gsap.to('#hero-follow-up .btn-container', {
+                        opacity: 0,
+                        yPercent: 25,
+                        duration: 1,
+                    });
                 }
-            })
-                .to('.hp_hero_background_image_wrapper img', {
-                    opacity: .5,
-                    filter: 'blur(20px)',
-                    duration: .8
-                })
-                .to('.hp_hero_content_wrapper', {
-                    opacity: 0,
-                    filter: 'blur(10px)',
-                    duration: .5
-                }, "<")
-                .to(text, {
-                    delay: .05,
-                    duration: 2,
-                    x: - distance,
-                    ease: 'none',
-                }, "<")
-                .to(text, {
-                    opacity: 0,
-                    duration: .25
-                }, "-=.2");
+            });
 
-            letters.forEach(letter => {
-                // const values = {
-                // y: (Math.floor(Math.random() * (16 - 10 + 1)) + 10) * (Math.random() * 20 - 10),
-                // rotation: (Math.floor(Math.random() * (20 - 10 + 1)) + 10) * (Math.random() * 2 - 1)
-                // }
-
-                gsap.from(letter, {
-                    yPercent: (Math.random() - 0.5) * 400, // Between -200 & 200
-                    rotation: (Math.random() - 0.5) * 60, // Between -30 & 30
-                    ease: "elastic.out(1.2, 1)", // Will bounce at the end of the animation
-                    scrollTrigger: {
-                        trigger: letter, // Listens to the tween's letter position
-                        containerAnimation: scrollTween,
-                        start: 'left 90%', // Animation starts when the letter is at the right edge of the viewport
-                        end: 'left 10%', // Ends when the letter reaches the left edge of the viewport
-                        scrub: 0.5 // Progresses with scrolling, with a 0.5s delay
-                    }
-                });
+            gsap.fromTo('#hero-follow-up .background-color-primary', {
+                opacity: 1
+            }, {
+                scrollTrigger: {
+                    trigger: heroFollowupContent,
+                    start: 'bottom 95%',
+                    end: 'bottom 96%',
+                    toggleActions: 'play none reverse none',
+                },
+                opacity: 0,
+                duration: .8,
             });
 
 
-            // UTIL METHOD - add span wrappers to each letter
-            function wrapLettersInSpan(element) {
-                const text = element.textContent;
-                element.innerHTML = text
-                    .split('')
-                    .map(char => char === ' ' ? '<span> </span>' : `<span class="letter">${char}</span>`)
-                    .join('');
-            }
         }
 
         // IMG SLIDE CURTAIN
@@ -266,7 +254,40 @@ export function homepage() {
                     })
                 }
 
-            }, 120)
+
+                const tabListSection = document.querySelector('.section_layout493');
+                const tabsList = document.querySelectorAll('.layout493_tab-link');
+                if (tabsList && tabListSection) {
+                    // tabsList.forEach(tab => {
+                    //     tab.addEventListener('mouseenter', () => {
+                    //         tab.click();
+                    //     });
+                    // });
+
+                    const links = gsap.utils.toArray('.layout493_tab-link');
+                    const N = links.length;
+
+                    let current = -1;
+                    const goTo = (idx) => {
+                        if (idx === current) return;
+                        current = idx;
+                        links[idx].click();
+                    };
+
+                    // iterate through each tab
+                    ScrollTrigger.create({
+                        trigger: tabListSection,
+                        start: 'top top',
+                        end: '+=200%',
+                        pin: true,
+                        invalidateOnRefresh: true,
+                        onUpdate: (self) => {
+                            const idx = Math.min(N - 1, Math.floor(self.progress * N));
+                            goTo(idx);
+                        },
+                    });
+                }
+            }, 120);
         }
 
         console.log("running homepage()");
