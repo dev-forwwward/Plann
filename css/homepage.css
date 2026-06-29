@@ -29,6 +29,12 @@
     }
 }
 
+@media screen and (max-width: 374px) {
+    .hp_hero_h1_container.heading-style-h1_custom {
+        font-size: 1.875rem;
+    }
+}
+
 
 /* WORKS */
 .work_item_container:hover .arrow_container {
