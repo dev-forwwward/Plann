@@ -132,7 +132,7 @@ export function navBarMenu() {
     // Run scroll logic on load in case page is opened mid-scroll
     handleScroll();
 
-    window.addEventListener("scroll", handleScroll);
+    lenis.on("scroll", handleScroll);
 
     console.log("running navBarMenu()");
 

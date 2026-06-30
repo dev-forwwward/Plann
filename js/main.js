@@ -1,7 +1,10 @@
 export function mainInit() {
 
     // LENIS
-    window.lenis = new Lenis(); // globally available
+    // globally available
+    window.lenis = new Lenis({
+        autoRaf: false // drive raf manually via GSAP's ticker below
+    });
 
     // Sync Lenis scrolling with ScrollTrigger
     lenis.on("scroll", ScrollTrigger.update);

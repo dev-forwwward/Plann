@@ -2,7 +2,7 @@ export function reveals() {
     document.fonts.ready.then(() => {
 
         setTimeout(() => {
-            ScrollTrigger.refresh();
+            // ScrollTrigger.refresh();
 
             // WORD-BY-WORD REVEAL
             const revealElements = document.querySelectorAll('[text-reveal]');
@@ -80,7 +80,7 @@ export function reveals() {
 
                     gsap.fromTo(el, {
                         opacity: 0,
-                    },{
+                    }, {
                         opacity: 1,
                         delay: .5,
                         duration,
@@ -152,7 +152,7 @@ export function reveals() {
                     gsap.fromTo(cascadeCards, {
                         opacity: 0,
                         yPercent: 25,
-                    },{
+                    }, {
                         opacity: 1,
                         yPercent: 0,
                         delay: .7,
@@ -163,6 +163,7 @@ export function reveals() {
 
                 });
             }
+            ScrollTrigger.refresh();
         }, 220);
     }); // document.fonts.ready
 }
