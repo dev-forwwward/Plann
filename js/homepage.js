@@ -114,6 +114,7 @@ export function homepage() {
                     start: 'top top',
                     end: '+=' + distance,
                     pin: true,
+                    anticipatePin: 1,
                     scrub: true
                 }
             })
@@ -178,6 +179,7 @@ export function homepage() {
                     start: 'top top',
                     end: '+=200%',
                     pin: true,
+                    anticipatePin: 1,
                     scrub: true,
                 }
             })
@@ -217,6 +219,7 @@ export function homepage() {
                 ScrollTrigger.create({
                     trigger: '.section_hp_team_wrapper',
                     pin: true,
+                    anticipatePin: 1,
                     start: 'top top',
                     end: '+=' + distance * .6
                 });
@@ -266,7 +269,7 @@ export function homepage() {
                     })
                 }
 
-            }, 120)
+            }, 10)
         }
 
         console.log("running homepage()");

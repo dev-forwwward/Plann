@@ -1,7 +1,11 @@
 export function mainInit() {
 
+    ScrollTrigger.normalizeScroll(true);
+
     // LENIS
-    window.lenis = new Lenis(); // globally available
+    window.lenis = new Lenis({
+        autoRaf: false
+    }); // globally available
 
     // Sync Lenis scrolling with ScrollTrigger
     lenis.on("scroll", ScrollTrigger.update);
