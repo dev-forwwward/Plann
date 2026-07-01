@@ -23,15 +23,14 @@
     }
 }
 
-@media screen and (min-width: 415px) and (max-width: 479px) {
-    .hp_hero_h1_container.heading-style-h1_custom {
-        font-size: 2.25rem;
+@media screen and (max-width: 767px) {
+    #slot {
+        min-width: 100%;
+        flex: 1;
     }
-}
 
-@media screen and (max-width: 374px) {
     .hp_hero_h1_container.heading-style-h1_custom {
-        font-size: 1.875rem;
+        font-size: clamp(2rem, 10.65vw, 4rem) !important;
     }
 }
 
