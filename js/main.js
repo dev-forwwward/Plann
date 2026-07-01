@@ -1,5 +1,7 @@
 export function mainInit() {
 
+    ScrollTrigger.normalizeScroll(true);
+    
     // LENIS
     // globally available
     window.lenis = new Lenis({

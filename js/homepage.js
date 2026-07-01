@@ -118,6 +118,7 @@ export function homepage() {
                     start: 'top top',
                     end: '+=100%',
                     pin: true,
+                    anticipatePin: 1,
                     scrub: true,
                 },
             }).from('#hero-follow-up .highlight-secondary span', {
@@ -166,6 +167,7 @@ export function homepage() {
                     start: 'top top',
                     end: '+=200%',
                     pin: true,
+                    anticipatePin: 1,
                     scrub: true,
                 }
             })
@@ -198,15 +200,18 @@ export function homepage() {
                         trigger: teamSection,
                         scrub: true,
                         start: 'top bottom',
-                        end: '+=' + distance
+                        end: '+=' + distance,
+                        // markers: true
                     }
                 });
 
                 ScrollTrigger.create({
                     trigger: '.section_hp_team_wrapper',
                     pin: true,
+                    anticipatePin: 1,
                     start: 'top top',
-                    end: '+=' + distance * .6
+                    end: '+=' + distance * .6,
+                    // markers: true
                 });
 
                 if (window.innerWidth > 767) {
@@ -280,6 +285,7 @@ export function homepage() {
                         start: 'top top',
                         end: '+=200%',
                         pin: true,
+                        anticipatePin: 1,
                         invalidateOnRefresh: true,
                         onUpdate: (self) => {
                             const idx = Math.min(N - 1, Math.floor(self.progress * N));
@@ -287,7 +293,7 @@ export function homepage() {
                         },
                     });
                 }
-            }, 120);
+            }, 10);
         }
 
         console.log("running homepage()");
