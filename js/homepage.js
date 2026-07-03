@@ -118,7 +118,7 @@ export function homepage() {
                     start: 'top top',
                     end: '+=100%',
                     pin: true,
-                    anticipatePin: 1,
+                    anticipatePin: 0,
                     scrub: true,
                 },
             }).from('#hero-follow-up .highlight-secondary span', {
@@ -133,7 +133,7 @@ export function homepage() {
                         duration: 1,
                     });
                 },
-                onReverseComplete: ()=> {
+                onReverseComplete: () => {
                     gsap.to('#hero-follow-up .btn-container', {
                         opacity: 0,
                         yPercent: 25,
@@ -167,7 +167,8 @@ export function homepage() {
                     start: 'top top',
                     end: '+=200%',
                     pin: true,
-                    anticipatePin: 1,
+                    anticipatePin: 0,
+                    scroller: document.querySelector('[data-lenis-scroll]') || document.body,
                     scrub: true,
                 }
             })
@@ -191,109 +192,108 @@ export function homepage() {
             const distance = (cardsContainer.clientWidth - window.innerWidth) * 1.2
 
 
-            setTimeout(() => {
-
-                const scrollTween = gsap.to(cardsContainer, {
-                    x: - distance,
-                    ease: 'none',
-                    scrollTrigger: {
-                        trigger: teamSection,
-                        scrub: true,
-                        start: 'top bottom',
-                        end: '+=' + distance,
-                        // markers: true
-                    }
-                });
-
-                ScrollTrigger.create({
-                    trigger: '.section_hp_team_wrapper',
-                    pin: true,
-                    anticipatePin: 1,
-                    start: 'top top',
-                    end: '+=' + distance * .6,
+            const scrollTween = gsap.to(cardsContainer, {
+                x: - distance,
+                ease: 'none',
+                scrollTrigger: {
+                    trigger: teamSection,
+                    scrub: true,
+                    start: 'top bottom',
+                    end: '+=' + distance,
                     // markers: true
-                });
+                }
+            });
 
-                if (window.innerWidth > 767) {
-                    cards.forEach(card => {
-                        const values = {
-                            // get a value between 30 and 50 or -30 and -50
-                            x: (Math.random() * 20 + 30) * (Math.random() < 0.5 ? 1 : -1),
-                            // get a value between 10 and 16 or -16 and -10
-                            y: (Math.random() * 6 + 10) * (Math.random() < 0.5 ? 1 : -1),
-                            // get a value between 10 and 20 or -10 and -20
-                            rotation: (Math.random() * 10 + 10) * (Math.random() < 0.5 ? 1 : -1)
-                        };
-                        gsap.fromTo(card, {
-                            rotation: values.rotation,
-                            xPercent: values.x,
-                            yPercent: values.y
-                        }, {
-                            rotation: - values.rotation,
-                            xPercent: - values.x,
-                            yPercent: - values.y,
-                            ease: 'none', // linear progression
-                            scrollTrigger: {
-                                trigger: card,
-                                containerAnimation: scrollTween, // tween will listen to scrollTween container position
-                                start: 'left 120%',
-                                end: 'right -20%',
-                                scrub: true,
-                            }
-                        })
-                    });
-                } else {
-                    gsap.fromTo('.hp_team_list_container', {
-                        xPercent: 0,
+            ScrollTrigger.create({
+                trigger: '.section_hp_team_wrapper',
+                pin: true,
+                anticipatePin: 0,
+                scroller: document.querySelector('[data-lenis-scroll]') || document.body,
+                start: 'top top',
+                end: '+=' + distance * .6,
+                // markers: true
+            });
+
+            if (window.innerWidth > 767) {
+                cards.forEach(card => {
+                    const values = {
+                        // get a value between 30 and 50 or -30 and -50
+                        x: (Math.random() * 20 + 30) * (Math.random() < 0.5 ? 1 : -1),
+                        // get a value between 10 and 16 or -16 and -10
+                        y: (Math.random() * 6 + 10) * (Math.random() < 0.5 ? 1 : -1),
+                        // get a value between 10 and 20 or -10 and -20
+                        rotation: (Math.random() * 10 + 10) * (Math.random() < 0.5 ? 1 : -1)
+                    };
+                    gsap.fromTo(card, {
+                        rotation: values.rotation,
+                        xPercent: values.x,
+                        yPercent: values.y
                     }, {
-                        delay: .5,
-                        xPercent: -100,
+                        rotation: - values.rotation,
+                        xPercent: - values.x,
+                        yPercent: - values.y,
                         ease: 'none', // linear progression
                         scrollTrigger: {
-                            // trigger: card,
-                            containerAnimation: scrollTween,
+                            trigger: card,
+                            containerAnimation: scrollTween, // tween will listen to scrollTween container position
                             start: 'left 120%',
                             end: 'right -20%',
                             scrub: true,
                         }
                     })
-                }
+                });
+            } else {
+                gsap.fromTo('.hp_team_list_container', {
+                    xPercent: 0,
+                }, {
+                    delay: .5,
+                    xPercent: -100,
+                    ease: 'none', // linear progression
+                    scrollTrigger: {
+                        // trigger: card,
+                        containerAnimation: scrollTween,
+                        start: 'left 120%',
+                        end: 'right -20%',
+                        scrub: true,
+                    }
+                })
+            }
 
 
-                const tabListSection = document.querySelector('.section_layout493');
-                const tabsList = document.querySelectorAll('.layout493_tab-link');
-                if (tabsList && tabListSection) {
-                    // tabsList.forEach(tab => {
-                    //     tab.addEventListener('mouseenter', () => {
-                    //         tab.click();
-                    //     });
-                    // });
+            const tabListSection = document.querySelector('.section_layout493');
+            const tabsList = document.querySelectorAll('.layout493_tab-link');
+            if (tabsList && tabListSection) {
+                // tabsList.forEach(tab => {
+                //     tab.addEventListener('mouseenter', () => {
+                //         tab.click();
+                //     });
+                // });
 
-                    const links = gsap.utils.toArray('.layout493_tab-link');
-                    const N = links.length;
+                const links = gsap.utils.toArray('.layout493_tab-link');
+                const N = links.length;
 
-                    let current = -1;
-                    const goTo = (idx) => {
-                        if (idx === current) return;
-                        current = idx;
-                        links[idx].click();
-                    };
+                let current = -1;
+                const goTo = (idx) => {
+                    if (idx === current) return;
+                    current = idx;
+                    links[idx].click();
+                };
 
-                    // iterate through each tab
-                    ScrollTrigger.create({
-                        trigger: tabListSection,
-                        start: 'top top',
-                        end: '+=200%',
-                        pin: true,
-                        anticipatePin: 1,
-                        invalidateOnRefresh: true,
-                        onUpdate: (self) => {
-                            const idx = Math.min(N - 1, Math.floor(self.progress * N));
-                            goTo(idx);
-                        },
-                    });
-                }
-            }, 10);
+                // iterate through each tab
+                ScrollTrigger.create({
+                    trigger: tabListSection,
+                    start: 'top top',
+                    end: '+=200%',
+                    pin: true,
+                    anticipatePin: 0,
+                    scroller: document.querySelector('[data-lenis-scroll]') || document.body,
+                    invalidateOnRefresh: true,
+                    onUpdate: (self) => {
+                        const idx = Math.min(N - 1, Math.floor(self.progress * N));
+                        goTo(idx);
+                    },
+                });
+            }
         }
 
         console.log("running homepage()");
