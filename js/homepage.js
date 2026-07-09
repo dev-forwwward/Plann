@@ -168,7 +168,6 @@ export function homepage() {
                     end: '+=200%',
                     pin: true,
                     anticipatePin: 0,
-                    scroller: document.querySelector('[data-lenis-scroll]') || document.body,
                     scrub: true,
                 }
             })
@@ -208,7 +207,6 @@ export function homepage() {
                 trigger: '.section_hp_team_wrapper',
                 pin: true,
                 anticipatePin: 0,
-                scroller: document.querySelector('[data-lenis-scroll]') || document.body,
                 start: 'top top',
                 end: '+=' + distance * .6,
                 // markers: true
@@ -286,7 +284,6 @@ export function homepage() {
                     end: '+=200%',
                     pin: true,
                     anticipatePin: 0,
-                    scroller: document.querySelector('[data-lenis-scroll]') || document.body,
                     invalidateOnRefresh: true,
                     onUpdate: (self) => {
                         const idx = Math.min(N - 1, Math.floor(self.progress * N));
