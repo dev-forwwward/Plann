@@ -1,17 +1,34 @@
-// note: not all script files are being loaded by default (example: faqs...)
+// Cache-busted dynamic imports: jsdelivr/browsers cache static `import` specifiers
+// hard (branch-alias staleness even after purge). A fresh query param per load
+// forces a real fetch every time, so pushes to main show up immediately.
+const v = Date.now();
+const [
+    { mainInit },
+    { navBarMenu },
+    { homepage },
+    { services },
+    { about },
+    { reveals },
+    { swiperInit },
+    { works },
+    { form },
+    { footerDate },
+    { menuDynamicTheme },
+] = await Promise.all([
+    import(`./main.js?v=${v}`),
+    import(`./menu.js?v=${v}`),
+    import(`./homepage.js?v=${v}`),
+    import(`./services.js?v=${v}`),
+    import(`./about.js?v=${v}`),
+    import(`./reveals.js?v=${v}`),
+    import(`./swiper.js?v=${v}`),
+    import(`./works.js?v=${v}`),
+    import(`./form.js?v=${v}`),
+    import(`./footer-date.js?v=${v}`),
+    import(`./menu-dynamic-theme.js?v=${v}`),
+]);
 
-import { mainInit } from './main.js';
-import { navBarMenu } from './menu.js';
-import { homepage } from './homepage.js';
-import { services } from './services.js';
-import { about } from './about.js';
-import { reveals } from './reveals.js';
-import { swiperInit } from './swiper.js';
-import { works } from './works.js';
-import { form } from './form.js';
-import { footerDate } from './footer-date.js';
-import { menuDynamicTheme } from './menu-dynamic-theme.js';
-
+// not all script files are being loaded by default (example: faqs...)
 
 window.tabletBreakpoint = 991;
 window.mobileBreakpoint = 767;
