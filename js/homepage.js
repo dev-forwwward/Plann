@@ -48,26 +48,24 @@ export function homepage() {
             let widthExtra = 6; // give it an extra 8px space to make sure nothing gets cut
             slot.style.width = Math.max(...Array.from(track.children).map(c => c.scrollWidth)) + widthExtra + 'px';
 
-            setTimeout(() => {
-                const wordCount = track.children.length - 1; // 4 real words (5th is clone)
-                lineH = slot.offsetHeight + 10; // height in px
-                gsap.set('.word-item', {
-                    height: lineH
-                });
+            const wordCount = track.children.length - 1; // 4 real words (5th is clone)
+            lineH = slot.offsetHeight + 10; // height in px
+            gsap.set('.word-item', {
+                height: lineH
+            });
 
-                const tl = gsap.timeline({ repeat: -1, paused: false });
+            const tl = gsap.timeline({ repeat: -1, paused: false });
 
-                for (let i = 1; i <= wordCount; i++) {
-                    tl.to(track, {
-                        y: () => { return `-${i * lineH}px` },
-                        duration: 1,
-                        ease: 'power2.inOut'
-                    }, '+=1.5')
-                }
+            for (let i = 1; i <= wordCount; i++) {
+                tl.to(track, {
+                    y: () => { return `-${i * lineH}px` },
+                    duration: 1,
+                    ease: 'power2.inOut'
+                }, '+=1.5')
+            }
 
-                // Snap back to start instantly after landing on the clone
-                tl.set(track, { y: 0 });
-            }, 350);
+            // Snap back to start instantly after landing on the clone
+            tl.set(track, { y: 0 });
 
             window.addEventListener('resize', () => {
                 // update above values
