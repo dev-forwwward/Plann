@@ -94,7 +94,7 @@ export function reveals() {
             }
 
             // TAG ELS REVEAL - DEFAULT
-            const tagEls = document.querySelectorAll('.tag');
+            const tagEls = document.querySelectorAll('.tag:not(.hero-tag)');
             if (tagEls.length > 0) {
                 tagEls.forEach((tag) => {
 
