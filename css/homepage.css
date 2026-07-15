@@ -18,7 +18,7 @@
 }
 
 @media screen and (min-width: 991px) and (max-width: 1150px) {
-    .hp_hero_h1_container {
+    .hp_hero_h1_container.heading-style-h1_custom {
         font-size: 6rem;
     }
 }
