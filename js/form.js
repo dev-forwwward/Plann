@@ -1,5 +1,7 @@
 export function form() {
 
+    const isPtPt = window.location.pathname.includes('/pt-pt');
+
     // Form validation
     if (document.querySelector('.section_contact_form')) {
         $("form").each(function (e) {
@@ -30,8 +32,9 @@ export function form() {
                 },
                 messages: {
                     youremail:
-                        "Invalid email",
-                    yourname: "Invalid name"
+                        isPtPt ? "Email inválido" : "Invalid email",
+                    yourname: isPtPt ? "Nome inválido" : "Invalid name",
+                    yourmessage: isPtPt ? "Este campo é obrigatório" : "This field is required",
                 },
                 errorPlacement: function (error, element) {
                     // Find the field wrapper using jQuery
