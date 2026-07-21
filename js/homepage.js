@@ -50,7 +50,7 @@ export function homepage() {
 
             setTimeout(() => {
                 const wordCount = track.children.length - 1; // 4 real words (5th is clone)
-                lineH = slot.offsetHeight + 10; // height in px
+                lineH = slot.offsetHeight; // height in px
                 gsap.set('.word-item', {
                     height: lineH
                 });
@@ -59,24 +59,33 @@ export function homepage() {
 
                 for (let i = 1; i <= wordCount; i++) {
                     tl.to(track, {
-                        y: () => { return `-${i * lineH}px` },
+                        y: () => {
+                            return `-${i * lineH}px`
+                        },
                         duration: 1,
+                        // overwrite: true,
                         ease: 'power2.inOut'
                     }, '+=1.5')
                 }
-
+                
                 // Snap back to start instantly after landing on the clone
                 tl.set(track, { y: 0 });
+
+                window.addEventListener('resize', () => {
+                    // update above values
+                    slot.style.width = Math.max(...Array.from(track.children).map(c => c.scrollWidth)) + widthExtra + 'px';
+                    lineH = slot.offsetHeight; // height in px
+                    gsap.set('.word-item', {
+                        height: lineH
+                    });
+                    gsap.set(track, {
+                        y: 0
+                    });
+                    tl.invalidate().restart();
+                });
             }, 350);
 
-            window.addEventListener('resize', () => {
-                // update above values
-                slot.style.width = Math.max(...Array.from(track.children).map(c => c.scrollWidth)) + 'px';
-                lineH = slot.offsetHeight; // height in px
-                gsap.set('.word-item', {
-                    height: lineH
-                });
-            });
+
         } else {
             // Anywhere else that is not the homepage
             gsap.from('.navbar-wrapper', {
