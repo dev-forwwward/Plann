@@ -55,7 +55,6 @@ export function menuDynamicTheme() {
                 trigger: section,
                 start: 'clamp(top top)',
                 end: 'clamp(bottom 70px)',
-                markers: true,
                 onEnter: () => {
                     navBar.classList.add('yellow');
                 },
