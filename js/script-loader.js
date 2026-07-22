@@ -34,19 +34,21 @@ window.tabletBreakpoint = 991;
 window.mobileBreakpoint = 767;
 
 function init() {
-    mainInit();
-    navBarMenu();
-    homepage();
-    services();
-    about();
-    works();
-    menuDynamicTheme();
-    swiperInit();
-    form();
-    footerDate();
-    reveals();
+    document.fonts.ready.then(() => {
+        mainInit();
+        navBarMenu();
+        homepage();
+        services();
+        about();
+        works();
+        menuDynamicTheme();
+        swiperInit();
+        form();
+        footerDate();
+        reveals();
 
-    console.log("Running main scripts loader");
+        console.log("Running main scripts loader");
+    });
 }
 
 if (document.readyState === 'loading') {
