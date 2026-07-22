@@ -1,26 +1,5 @@
 export function mainInit() {
 
-    // ScrollTrigger.normalizeScroll(true);
-
-    // // LENIS
-    // // globally available
-    // window.lenis = new Lenis({
-    //     autoRaf: false // drive raf manually via GSAP's ticker below
-    // });
-
-    // // Sync Lenis scrolling with ScrollTrigger
-    // lenis.on("scroll", ScrollTrigger.update);
-
-    // // Add Lenis's requestAnimationFrame (raf) method to GSAP's ticker
-    // // This ensures Lenis's smooth scroll animation updates on each GSAP tick
-    // gsap.ticker.add((time) => {
-    //     lenis.raf(time * 1000);
-    // });
-
-    // // Disable lag smoothing in GSAP to prevent any delay in scroll animations
-    // gsap.ticker.lagSmoothing(0);
-
-
     ScrollTrigger.normalizeScroll(true);
     // Initialize Lenis
     window.lenis = new Lenis({
@@ -38,22 +17,6 @@ export function mainInit() {
 
     // Disable lag smoothing in GSAP to prevent any delay in scroll animations
     gsap.ticker.lagSmoothing(0);
-
-
-    // // Update Lenis on each animation frame
-    // function raf(time) {
-    //     lenis.raf(time);
-    //     requestAnimationFrame(raf);
-    // }
-
-    // requestAnimationFrame(raf);
-
-    // window.addEventListener('resize', () => {
-    //     lenis?.resize?.(); // Will only run if supported
-    // });
-
-
-
 
     // FANCYBOX INIT
     const fancyboxEl = document.querySelector("[data-fancybox]");
@@ -116,8 +79,5 @@ export function mainInit() {
             seeOffersBtn.insertAdjacentHTML('afterbegin', `<span class="job_count">${jobOffers.length}</span>`);
         }
     }
-
-
-    console.log("Loading mainInit()");
 
 }
