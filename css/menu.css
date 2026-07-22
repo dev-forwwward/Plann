@@ -143,9 +143,13 @@ body:not(.navbar-menu-open) .navbar.lighter {
         background-color: var(--color-scheme-1--text);
     }
 
+    .locales-list {
+        background-color: var(--neutral-200);
+    }
+
     .locale {
-        background-color: var(--neutral-200);;
         color: var(--neutral-900);
+        background-color: transparent;
     }
 
     .locale::before {
@@ -156,6 +160,11 @@ body:not(.navbar-menu-open) .navbar.lighter {
         background-color: #EAE1CD;
     }
 
+    .locale:hover,
+    .locale:hover::before {
+        background-color: var(--neutral-400);
+    }
+
     .menu-link {
         background-color: var(--neutral-200);
         -webkit-backdrop-filter: none;
@@ -163,6 +172,11 @@ body:not(.navbar-menu-open) .navbar.lighter {
         color: var(--neutral-900);
     }
 
+    .menu-link.w--current {
+        background-color: var(--neutral-300);
+    }
+
+    .nav_logo:hover,
     .menu-link:hover {
         background-color: #BEBAA7;
     }
@@ -180,17 +194,25 @@ body:not(.navbar-menu-open) .navbar.darker {
         background-color: var(--neutral-800);
     }
 
-    .locale {
+    .locales-list {
         background-color: var(--neutral-800);
+    }
+
+    .locale {
         color: var(--neutral-100);
     }
 
-    .locale-link:hover {
-        background-color: #ffffff0a;
+    .locale::before {
+        background-color: var(--neutral-300);
     }
 
     .locale-link.w--current {
         background-color: #fff3;
+    }
+
+    .locale:hover,
+    .locale:hover::before {
+        background-color: #ffffff0a;
     }
 
     /* .locale::before {
@@ -202,6 +224,11 @@ body:not(.navbar-menu-open) .navbar.darker {
         color: var(--neutral-100);
     }
 
+    .menu-link.w--current {
+        background-color: var(--neutral-900);
+    }
+
+    .nav_logo:hover,
     .menu-link:hover {
         background-color: var(--neutral-700);
     }
@@ -216,6 +243,63 @@ body:not(.navbar-menu-open) .navbar.darker {
         background-color: var(--neutral-100) !important;
     }
 
+}
+
+body:not(.navbar-menu-open) .navbar.yellow {
+    .nav_logo,
+    .mobile-menu-button {
+        background-color: rgba(0,0,0,.04);
+        -webkit-backdrop-filter: none;
+        backdrop-filter: none;
+        color: var(--color-scheme-1--text);
+    }
+
+    .nav_button_icon > div {
+        background-color: var(--color-scheme-1--text);
+    }
+
+    .locales-list {
+        background-color: rgba(0,0,0,.04);
+    }
+
+    .locale {
+        color: var(--neutral-900);
+        background-color: transparent;
+    }
+
+    .locale::before {
+        background-color: var(--neutral-300);
+    }
+
+    .locale-link.w--current {
+        background-color: rgba(255,255,255,.5);
+    }
+
+    .locale:hover,
+    .locale:hover::before {
+        background-color: rgba(255,255,255,.25);
+    }
+
+    .menu-link {
+        background-color: rgba(0,0,0,.04);
+        -webkit-backdrop-filter: none;
+        backdrop-filter: none;
+        color: var(--neutral-900);
+    }
+    
+    .menu-link.w--current {
+        background-color: rgba(0,0,0,.1);
+    }
+
+    .nav_logo:hover,
+    .menu-link:hover {
+        background-color: rgba(255,255,255,.5);
+    }
+
+    .yellow-button {
+        background-color: var(--neutral-800);
+        color: var(--yellow);
+    }
 }
 
 .navbar-menu-open [data-wf--navbar-main--variant="base"] .nav_brand_icon,
