@@ -121,6 +121,15 @@ export function swiperInit() {
             tabLinks.forEach((link, i) => {
                 link.classList.toggle('is-active', i === activeIndex);
             });
+
+            const activeLink = tabLinks[activeIndex];
+            if (activeLink) {
+                activeLink.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'nearest',
+                    inline: 'center',
+                });
+            }
         }
 
         const servicesSwiper = new Swiper(servicesSwiperContainer, {
