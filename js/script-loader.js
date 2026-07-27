@@ -42,7 +42,7 @@ function init() {
         about();
         works();
         menuDynamicTheme();
-        // swiperInit();
+        swiperInit();
         form();
         footerDate();
         reveals();

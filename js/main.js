@@ -1,6 +1,9 @@
 export function mainInit() {
 
-    ScrollTrigger.normalizeScroll({ allowNestedScroll: true });
+    ScrollTrigger.normalizeScroll({
+        allowNestedScroll: true,
+        ignore: '.layout350_tabs-menu_wrapper'
+    });
     // Initialize Lenis
     window.lenis = new Lenis({
         autoRaf: false,
