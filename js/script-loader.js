@@ -38,11 +38,11 @@ function init() {
         mainInit();
         navBarMenu();
         homepage();
-        // services();
+        services();
         about();
         works();
         menuDynamicTheme();
-        swiperInit();
+        // swiperInit();
         form();
         footerDate();
         reveals();
