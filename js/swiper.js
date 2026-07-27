@@ -141,9 +141,6 @@ export function swiperInit() {
                 slideChange() {
                     updateTabLinks(this.activeIndex);
                 },
-                init() {
-                    updateTabLinks(this.activeIndex);
-                },
             },
         });
 
