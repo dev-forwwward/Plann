@@ -1,6 +1,6 @@
 export function mainInit() {
 
-    ScrollTrigger.normalizeScroll(true);
+    ScrollTrigger.normalizeScroll({ allowNestedScroll: true });
     // Initialize Lenis
     window.lenis = new Lenis({
         autoRaf: false,
