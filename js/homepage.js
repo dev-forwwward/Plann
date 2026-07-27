@@ -110,14 +110,13 @@ export function homepage() {
             }, {
                 scrollTrigger: {
                     trigger: heroFollowupContent.querySelector('.bg_container'),
-                    start: 'top 60%',
+                    start: 'top 55%',
                     end: 'top top',
-                    scrub: true,
+                    scrub: 1,
                     // markers: true
                 },
                 opacity: 1,
-                stagger: .5,
-                duration: 2,
+                stagger: .15,
                 ease: 'none'
             });
 
