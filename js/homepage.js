@@ -155,9 +155,10 @@ export function homepage() {
             }, {
                 scrollTrigger: {
                     trigger: heroFollowupContent,
-                    start: 'bottom 95%',
-                    end: 'bottom 96%',
+                    start: 'clamp(bottom 99%)',
+                    end: 'clamp(bottom 98%)',
                     toggleActions: 'play none reverse none',
+                    markers: true
                 },
                 opacity: 0,
                 duration: .8,
