@@ -164,21 +164,6 @@ export function homepage() {
                 },
             });
 
-            // gsap.fromTo('#hero-follow-up .background-color-primary', {
-            //     opacity: 1
-            // }, {
-            //     scrollTrigger: {
-            //         trigger: heroFollowupContent,
-            //         start: 'clamp(bottom 99%)',
-            //         end: 'clamp(bottom 98%)',
-            //         toggleActions: 'play none reverse none',
-            //         // markers: true
-            //     },
-            //     opacity: 0,
-            //     duration: .8,
-            // });
-
-
         }
 
         // IMG SLIDE CURTAIN
