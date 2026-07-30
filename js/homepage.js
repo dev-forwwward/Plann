@@ -158,7 +158,7 @@ export function homepage() {
                     start: 'clamp(bottom 99%)',
                     end: 'clamp(bottom 98%)',
                     toggleActions: 'play none reverse none',
-                    markers: true
+                    // markers: true
                 },
                 opacity: 0,
                 duration: .8,
