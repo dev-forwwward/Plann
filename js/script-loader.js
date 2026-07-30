@@ -17,7 +17,7 @@ const [
 ] = await Promise.all([
     import(`./main.js?v=${v}`),
     import(`./menu.js?v=${v}`),
-    import(`./homepage.js?v=${v}`),
+    import(`./homepage-v2.js?v=${v}`),
     import(`./services.js?v=${v}`),
     import(`./about.js?v=${v}`),
     import(`./reveals.js?v=${v}`),
