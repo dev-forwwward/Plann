@@ -67,7 +67,7 @@ export function homepage() {
                         ease: 'power2.inOut'
                     }, '+=1.5')
                 }
-                
+
                 // Snap back to start instantly after landing on the clone
                 tl.set(track, { y: 0 });
 
@@ -128,11 +128,25 @@ export function homepage() {
                     pin: true,
                     anticipatePin: 0,
                     scrub: true,
+                    onLeave: () => {
+                        gsap.to('#hero-follow-up .background-color-primary', {
+                            delay: .35,
+                            opacity: 0,
+                            duration: .8,
+                        });
+                    },
+                    onEnterBack: () => {
+                        gsap.to('#hero-follow-up .background-color-primary', {
+                            opacity: 1,
+                            duration: .35,
+                        });
+                    }
                 },
             }).from('#hero-follow-up .highlight-secondary span', {
                 opacity: 0,
                 stagger: .4,
                 duration: .8,
+                delay: .2,
                 ease: 'none',
                 onComplete: () => {
                     gsap.to('#hero-follow-up .btn-container', {
@@ -147,22 +161,22 @@ export function homepage() {
                         yPercent: 25,
                         duration: 1,
                     });
-                }
+                },
             });
 
-            gsap.fromTo('#hero-follow-up .background-color-primary', {
-                opacity: 1
-            }, {
-                scrollTrigger: {
-                    trigger: heroFollowupContent,
-                    start: 'clamp(bottom 99%)',
-                    end: 'clamp(bottom 98%)',
-                    toggleActions: 'play none reverse none',
-                    // markers: true
-                },
-                opacity: 0,
-                duration: .8,
-            });
+            // gsap.fromTo('#hero-follow-up .background-color-primary', {
+            //     opacity: 1
+            // }, {
+            //     scrollTrigger: {
+            //         trigger: heroFollowupContent,
+            //         start: 'clamp(bottom 99%)',
+            //         end: 'clamp(bottom 98%)',
+            //         toggleActions: 'play none reverse none',
+            //         // markers: true
+            //     },
+            //     opacity: 0,
+            //     duration: .8,
+            // });
 
 
         }
