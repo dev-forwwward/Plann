@@ -115,8 +115,10 @@ export function navBarMenu() {
             if (scrollTop > lastScrollTop && scrollTop > 10) {
                 let navHeight = navComponent.offsetHeight;
                 navComponent.style.top = `-${navHeight}px`;
+                document.body.classList.remove("nav-visible");
             } else {
                 navComponent.style.top = "0";
+                document.body.classList.add("nav-visible");
             }
         }
 

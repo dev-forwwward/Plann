@@ -124,23 +124,11 @@ export function homepage() {
                 scrollTrigger: {
                     trigger: heroFollowupContent,
                     start: 'top top',
-                    end: '+=100%',
+                    end: '+=150%',
                     pin: true,
                     anticipatePin: 0,
                     scrub: true,
-                    onLeave: () => {
-                        gsap.to('#hero-follow-up .background-color-primary', {
-                            delay: .35,
-                            opacity: 0,
-                            duration: .8,
-                        });
-                    },
-                    onEnterBack: () => {
-                        gsap.to('#hero-follow-up .background-color-primary', {
-                            opacity: 1,
-                            duration: .35,
-                        });
-                    }
+                    // markers: true
                 },
             }).from('#hero-follow-up .highlight-secondary span', {
                 opacity: 0,
@@ -160,6 +148,25 @@ export function homepage() {
                         opacity: 0,
                         yPercent: 25,
                         duration: 1,
+                    });
+                },
+            });
+
+            // Fade background once the section is half scrolled off the viewport
+            ScrollTrigger.create({
+                trigger: heroFollowupContent,
+                start: 'center top',
+                // markers: true,
+                onEnter: () => {
+                    gsap.to('#hero-follow-up .background-color-primary', {
+                        opacity: 0,
+                        duration: .5,
+                    });
+                },
+                onLeaveBack: () => {
+                    gsap.to('#hero-follow-up .background-color-primary', {
+                        opacity: 1,
+                        duration: .5,
                     });
                 },
             });

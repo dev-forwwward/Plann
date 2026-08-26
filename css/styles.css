@@ -120,6 +120,18 @@
         background-color: var(--color-scheme-1--highlight);
         color: var(--color-scheme-1--text);
     }
+
+    /* Sticky tabs offset: 2rem while the navbar is auto-hidden on scroll-down,
+       5rem while it's revealed on scroll-up, kept in sync via .nav-visible
+       (toggled in menu.js) since Designer only sets a single static top value. */
+    .layout350_tabs-menu {
+        top: 1rem !important;
+        transition: top 0.3s ease-in-out;
+    }
+
+    body.nav-visible .layout350_tabs-menu {
+        top: 5rem !important;
+    }
 }
 
 .card-row39_area:hover .card_row_desc_container {
@@ -159,3 +171,15 @@
     opacity: 0;
 }
 
+
+
+
+/* Project Page */
+
+.work_slide_inner img {
+    transition: transform 0.6s ease;
+}
+
+.work_slide_inner:hover img {
+    transform: scale(1.06);
+}

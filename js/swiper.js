@@ -123,12 +123,15 @@ export function swiperInit() {
             });
 
             const activeLink = tabLinks[activeIndex];
-            if (activeLink) {
-                activeLink.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'nearest',
-                    inline: 'center',
-                });
+            // scrollIntoView's block:'nearest' still scrolls the page
+            // vertically when the tab isn't already in the viewport. Scroll
+            // only the horizontal tab strip instead, by hand.
+            const scrollContainer = activeLink && activeLink.closest('.layout350_tabs-menu');
+            if (activeLink && scrollContainer) {
+                const containerRect = scrollContainer.getBoundingClientRect();
+                const linkRect = activeLink.getBoundingClientRect();
+                const offset = (linkRect.left + linkRect.width / 2) - (containerRect.left + containerRect.width / 2);
+                scrollContainer.scrollBy({ left: offset, behavior: 'smooth' });
             }
         }
 
@@ -142,12 +145,33 @@ export function swiperInit() {
                     updateTabLinks(this.activeIndex);
                 },
             },
+            //markers: true // Enables visual debugging lines
         });
 
         tabLinks.forEach((link, index) => {
+            // Drop the in-page-anchor href so Webflow's built-in anchor
+            // smooth-scroll never hijacks the click (it fires before this
+            // listener and scrolls/pushes history regardless of preventDefault).
+            link.removeAttribute('href');
+            link.setAttribute('tabindex', '0');
+
+            const activateSlide = () => servicesSwiper.slideTo(index);
+
+            // A tabindex makes the browser focus (and scroll to) the link on
+            // mouse click, not just keyboard nav. Block that on mousedown so
+            // clicking never scrolls, while Tab-key focus still works.
+            link.addEventListener('mousedown', (e) => e.preventDefault());
+
             link.addEventListener('click', (e) => {
                 e.preventDefault();
-                servicesSwiper.slideTo(index);
+                activateSlide();
+            });
+
+            link.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    activateSlide();
+                }
             });
         });
     }
