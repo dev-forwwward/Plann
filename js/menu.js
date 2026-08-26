@@ -142,6 +142,19 @@ export function navBarMenu() {
         }
     };
 
+    // Mobile browsers collapse/expand their address bar on tap and scroll,
+    // which shifts scrollY by tens of px with no user scroll gesture behind
+    // it. Resync the reference point on viewport-height change so that shift
+    // isn't misread as a scroll-down and doesn't hide the nav on its own.
+    const resyncScrollReference = () => {
+        lastScrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    };
+    if (window.visualViewport) {
+        window.visualViewport.addEventListener("resize", resyncScrollReference);
+    } else {
+        window.addEventListener("resize", resyncScrollReference);
+    }
+
     // Run scroll logic on load in case page is opened mid-scroll
     handleScroll();
 
