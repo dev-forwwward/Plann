@@ -107,18 +107,31 @@ export function navBarMenu() {
         return;
     }
 
+    // Below this, treat frame-to-frame movement as noise, not a direction
+    // change — Lenis's eased scroll shrinks to sub-pixel deltas as it settles,
+    // and comparing every frame against the previous one made the nav flicker
+    // hidden/visible repeatedly whenever a scroll came to a stop.
+    const SCROLL_DIRECTION_THRESHOLD = 5;
+
     const handleScroll = () => {
         const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
         const isOpen = menuNavBar.classList.contains("w--open");
 
         if (!isOpen) {
-            if (scrollTop > lastScrollTop && scrollTop > 10) {
-                let navHeight = navComponent.offsetHeight;
-                navComponent.style.top = `-${navHeight}px`;
-                document.body.classList.remove("nav-visible");
-            } else {
+            if (scrollTop <= 10) {
                 navComponent.style.top = "0";
                 document.body.classList.add("nav-visible");
+                lastScrollTop = scrollTop;
+            } else if (Math.abs(scrollTop - lastScrollTop) > SCROLL_DIRECTION_THRESHOLD) {
+                if (scrollTop > lastScrollTop) {
+                    let navHeight = navComponent.offsetHeight;
+                    navComponent.style.top = `-${navHeight}px`;
+                    document.body.classList.remove("nav-visible");
+                } else {
+                    navComponent.style.top = "0";
+                    document.body.classList.add("nav-visible");
+                }
+                lastScrollTop = scrollTop;
             }
         }
 
@@ -127,8 +140,6 @@ export function navBarMenu() {
         } else {
             navComponent.classList.remove("scrolled");
         }
-
-        lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
     };
 
     // Run scroll logic on load in case page is opened mid-scroll
